@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDF8 Bin Straightening Initiative - Audit System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>SDF8 Bin Audit System</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#audit">Audit</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#standards">Standards</a></li>
+                <li><a href="#metrics">Metrics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>SDF8 Bin Straightening Initiative</h1>
+            <p>Process Modification Validation & Pick Department Enhancement</p>
+            <p class="effective-date"><strong>Effective Date: March 22, 2026</strong></p>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section dashboard-section">
+        <div class="container">
+            <h2>Real-Time Dashboard</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Current Pick DPMO</h3>
+                    <p class="metric-value" id="currentDPMO">35,000</p>
+                    <p class="metric-label">Defects Per Million Opportunities</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Bins Processed Today</h3>
+                    <p class="metric-value" id="binsProcessed">0</p>
+                    <p class="metric-label">Target: 49 per hour</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Avg Time Per Bin</h3>
+                    <p class="metric-value" id="avgTimePerBin">1:54</p>
+                    <p class="metric-label">Minutes:Seconds</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Error Reduction</h3>
+                    <p class="metric-value" id="errorReduction">0%</p>
+                    <p class="metric-label">Target: 20%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="section problem-section">
+        <div class="container">
+            <h2>The Problem</h2>
+            <div class="problem-content">
+                <div class="problem-item">
+                    <h3>❌ Current Challenges</h3>
+                    <ul>
+                        <li>Bins lack consistent organizational standards</li>
+                        <li>Disorganized conditions slow pick rates</li>
+                        <li>Increased errors and associate frustration</li>
+                        <li>Current Pick DPMO: ~35,000 (primarily wrong ASIN selections)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="section solution-section">
+        <div class="container">
+            <h2>The Solution</h2>
+            <div class="solution-content">
+                <h3>Daily Bin Straightening Program</h3>
+                <ul>
+                    <li>✓ TLD Associates perform daily bin organization</li>
+                    <li>✓ Focus on previously stowed floors</li>
+                    <li>✓ Follow R.O.B.O.T.S. bin etiquette protocol</li>
+                    <li>✓ Target: 49 bins per hour (1 min 54 sec per bin)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- R.O.B.O.T.S. Standards -->
+    <section id="standards" class="section robots-section">
+        <div class="container">
+            <h2>R.O.B.O.T.S. - Six Standards for Perfect Bins</h2>
+            <div class="standards-grid">
+                <div class="standard-card">
+                    <div class="standard-letter">R</div>
+                    <h3>Right Size Bin</h3>
+                    <p>Items must fit appropriately in the bin size. Match item size to bin capacity to prevent damage and improve accessibility.</p>
+                    <ul>
+                        <li>Proper sizing for items</li>
+                        <li>Prevents damage</li>
+                        <li>Easier location retrieval</li>
+                    </ul>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-letter">O</div>
+                    <h3>Overhang</h3>
+                    <p>No items should hang over the bin edge. Prevents items from falling and maintains clear aisle access.</p>
+                    <ul>
+                        <li>Prevents item falling</li>
+                        <li>Reduces safety hazards</li>
+                        <li>Maintains clear aisles</li>
+                    </ul>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-letter">B</div>
+                    <h3>Blocking</h3>
+                    <p>Items should not block bin labels or barcodes. Ensures quick scanning and reduces pick time.</p>
+                    <ul>
+                        <li>Labels clearly visible</li>
+                        <li>Reduces pick time</li>
+                        <li>Prevents wrong selections</li>
+                    </ul>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-letter">O</div>
+                    <h3>Overstuffed</h3>
+                    <p>Bins should not be packed beyond capacity. Maintains item integrity and allows easy removal.</p>
+                    <ul>
+                        <li>Maintains integrity</li>
+                        <li>Prevents damage</li>
+                        <li>Easy item removal</li>
+                    </ul>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-letter">T</div>
+                    <h3>Titles Out</h3>
+                    <p>Product labels/titles should face outward. Enables quick visual identification and reduces search time.</p>
+                    <ul>
+                        <li>Quick identification</li>
+                        <li>Reduces search time</li>
+                        <li>Improves accuracy</li>
+                    </ul>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-letter">S</div>
+                    <h3>Same ASIN</h3>
+                    <p>Only identical items (same ASIN) in each bin. Critical for preventing wrong item picks.</p>
+                    <ul>
+                        <li>Eliminates confusion</li>
+                        <li>Prevents wrong picks</li>
+                        <li>Critical accuracy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Timeline -->
+    <section class="section timeline-section">
+        <div class="container">
+            <h2>Implementation Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-number">1</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 1: Pilot Program (Weeks 1-2)</h3>
+                        <ul>
+                            <li>One zone implementation</li>
+                            <li>Monitor and adjust procedures</li>
+                            <li>Gather initial feedback</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-number">2</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 2: Full Rollout (Weeks 3-4)</h3>
+                        <ul>
+                            <li>Expand to all zones</li>
+                            <li>Scale training program</li>
+                            <li>Establish daily routines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-number">3</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 3: Ongoing Operations (Week 5+)</h3>
+                        <ul>
+                            <li>Daily bin straightening</li>
+                            <li>Continuous monitoring</li>
+                            <li>Regular quality checks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Benefits -->
+    <section class="section benefits-section">
+        <div class="container">
+            <h2>Expected Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Efficiency Improvements</h3>
+                    <ul>
+                        <li>5-10% improvement in pick rate efficiency</li>
+                        <li>20% reduction in pick errors (wrong ASIN)</li>
+                        <li>~1 penny saved per unit picked</li>
+                        <li>Improved associate satisfaction</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <h3>Quality Improvements</h3>
+                    <ul>
+                        <li>Standardized bin organization</li>
+                        <li>Reduced DPMO</li>
+                        <li>Better working conditions</li>
+                        <li>Increased accuracy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPIs -->
+    <section id="metrics" class="section kpi-section">
+        <div class="container">
+            <h2>Success Metrics (KPIs)</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Productivity Metrics</h3>
+                    <ul>
+                        <li><strong>Bins per hour:</strong> Target 49</li>
+                        <li><strong>Time per bin:</strong> Target 1:54</li>
+                    </ul>
+                </div>
+                <div class="kpi-card">
+                    <h3>Quality Metrics</h3>
+                    <ul>
+                        <li><strong>Pick rate improvement:</strong> 5-10%</li>
+                        <li><strong>DPMO reduction:</strong> 20% for wrong ASIN</li>
+                        <li><strong>Completion rates:</strong> Daily tracking</li>
+                    </ul>
+                </div>
+                <div class="kpi-card">
+                    <h3>Safety & Satisfaction</h3>
+                    <ul>
+                        <li><strong>Safety incidents:</strong> Zero target</li>
+                        <li><strong>Associate satisfaction:</strong> Regular surveys</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audit Section -->
+    <section id="audit" class="section audit-section">
+        <div class="container">
+            <h2>Daily Bin Audit Checklist</h2>
+            <form id="auditForm" class="audit-form">
+                <div class="form-section">
+                    <h3>Audit Information</h3>
+                    <div class="form-group">
+                        <label for="associateName">Associate Name:</label>
+                        <input type="text" id="associateName" name="associateName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Audit Date:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zone">Zone:</label>
+                        <input type="text" id="zone" name="zone" placeholder="e.g., Zone A, Zone B" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="binNumber">Bin Number:</label>
+                        <input type="text" id="binNumber" name="binNumber" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>R.O.B.O.T.S. Standards Checklist</h3>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="rightSizeBin" value="yes">
+                            <strong>R - Right Size Bin:</strong> Items fit appropriately in bin size
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="noOverhang" value="yes">
+                            <strong>O - Overhang:</strong> No items hang over bin edge
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="noBlocking" value="yes">
+                            <strong>B - Blocking:</strong> Labels/barcodes not blocked by items
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="notOverstuffed" value="yes">
+                            <strong>O - Overstuffed:</strong> Bin not packed beyond capacity
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="titlesOut" value="yes">
+                            <strong>T - Titles Out:</strong> Product labels face outward
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="sameASIN" value="yes">
+                            <strong>S - Same ASIN:</strong> Only identical items in bin
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+                    <div class="form-group">
+                        <label for="notes">Notes/Issues Found:</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Document any issues or observations"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeSpent">Time Spent (minutes):</label>
+                        <input type="number" id="timeSpent" name="timeSpent" min="0" placeholder="e.g., 2">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Audit</button>
+                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                </div>
+            </form>
+            <div id="auditMessage" class="audit-message" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="training" class="section training-section">
+        <div class="container">
+            <h2>Training & Certification</h2>
+            <div class="training-content">
+                <div class="training-module">
+                    <h3>Mandatory Training</h3>
+                    <ul>
+                        <li>✓ R.O.B.O.T.S. standard certification</li>
+                        <li>✓ Hands-on practice sessions</li>
+                        <li>✓ Safety protocol review</li>
+                        <li>✓ Quality standards assessment</li>
+                    </ul>
+                </div>
+
+                <div class="training-module">
+                    <h3>Ergonomic Standards</h3>
+                    <ul>
+                        <li>✓ Proper lifting techniques (bend at knees, not waist)</li>
+                        <li>✓ Use step stools for high bins</li>
+                        <li>✓ Take breaks every 2 hours</li>
+                        <li>✓ Report discomfort immediately</li>
+                    </ul>
+                </div>
+
+                <div class="training-module">
+                    <h3>PPE Requirements</h3>
+                    <ul>
+                        <li>✓ Safety shoes (required)</li>
+                        <li>✓ Back support belt (optional)</li>
+                        <li>✓ Gloves (recommended)</li>
+                    </ul>
+                </div>
+
+                <div class="training-module">
+                    <h3>Accommodations Available</h3>
+                    <ul>
+                        <li>✓ Modified duties for physical restrictions</li>
+                        <li>✓ Alternative bin assignments</li>
+                        <li>✓ Ergonomic support equipment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roles & Responsibilities -->
+    <section class="section roles-section">
+        <div class="container">
+            <h2>Roles & Responsibilities</h2>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <h3>TLD Associates</h3>
+                    <ul>
+                        <li>Perform daily bin straightening</li>
+                        <li>Follow R.O.B.O.T.S. standards</li>
+                        <li>Report issues or concerns</li>
+                        <li>Maintain productivity targets</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <h3>All Associates</h3>
+                    <ul>
+                        <li>Maintain bins during stowing</li>
+                        <li>Report disorganized bins</li>
+                        <li>Support the initiative</li>
+                        <li>Follow safety protocols</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <h3>Managers</h3>
+                    <ul>
+                        <li>Monitor KPIs and performance</li>
+                        <li>Review audit completion rates</li>
+                        <li>Analyze trend data</li>
+                        <li>Support team development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>R.O.B.O.T.S. = Better Bins = Better Picks!</strong></p>
+            <p>SDF8 Bin Straightening Initiative | Process Modification Validation</p>
+            <p>For questions or support, contact Operations Manager, Safety Team, or Training Coordinator</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
