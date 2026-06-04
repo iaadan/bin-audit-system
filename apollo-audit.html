@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo Audit - Warehouse Operations Audit System</title>
+    <link rel="stylesheet" href="apollo-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🚀 Apollo Audit System</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#create-audit" class="nav-link">New Audit</a></li>
+                <li><a href="#audit-history" class="nav-link">History</a></li>
+                <li><a href="#reports" class="nav-link">Reports</a></li>
+                <li class="user-profile">
+                    <span id="currentUser">User Profile</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="section-header">
+                <h2>Audit Dashboard</h2>
+                <p>Real-time audit metrics and performance overview</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Total Audits</h3>
+                    <p class="metric-value" id="totalAudits">0</p>
+                    <p class="metric-label">All time</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">✅</div>
+                    <h3>Compliant</h3>
+                    <p class="metric-value" id="compliantAudits">0</p>
+                    <p class="metric-label">Last 30 days</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">⚠️</div>
+                    <h3>Non-Compliant</h3>
+                    <p class="metric-value" id="nonCompliantAudits">0</p>
+                    <p class="metric-label">Needs action</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">⏱️</div>
+                    <h3>Avg Completion Time</h3>
+                    <p class="metric-value" id="avgCompletionTime">--</p>
+                    <p class="metric-label">Minutes</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Compliance Rate</h3>
+                    <p class="metric-value" id="complianceRate">0%</p>
+                    <p class="metric-label">Target: 95%</p>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">👥</div>
+                    <h3>Active Auditors</h3>
+                    <p class="metric-value" id="activeAuditors">0</p>
+                    <p class="metric-label">This month</p>
+                </div>
+            </div>
+
+            <!-- Recent Audits -->
+            <div class="recent-audits">
+                <h3>Recent Audit Activity</h3>
+                <div id="recentAuditsList" class="audits-list">
+                    <p class="empty-state">No audits yet. Create your first audit to get started.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Create New Audit Section -->
+        <section id="create-audit" class="section">
+            <div class="section-header">
+                <h2>Create New Audit</h2>
+                <p>Select an audit type and configure parameters</p>
+            </div>
+
+            <!-- Audit Type Selection -->
+            <div class="audit-selection-grid">
+                <div id="auditTypesContainer" class="audit-types-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Audit Configuration Form -->
+            <div id="auditConfigForm" class="audit-form-container" style="display: none;">
+                <div class="form-card">
+                    <h3 id="formAuditTitle">Configure Audit</h3>
+                    <form id="configForm" class="audit-config-form">
+                        
+                        <div class="form-section">
+                            <h4>Audit Information</h4>
+                            
+                            <div class="form-group">
+                                <label for="auditorName">Auditor Name: <span class="required">*</span></label>
+                                <input type="text" id="auditorName" name="auditorName" required placeholder="Enter full name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="auditorRole">Role: <span class="required">*</span></label>
+                                <select id="auditorRole" name="auditorRole" required>
+                                    <option value="">Select a role</option>
+                                    <option value="Area Manager">Area Manager</option>
+                                    <option value="TLD Associate">TLD Associate</option>
+                                    <option value="Quality Auditor">Quality Auditor</option>
+                                    <option value="Safety Team">Safety Team</option>
+                                    <option value="Maintenance">Maintenance Team</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="auditDate">Audit Date: <span class="required">*</span></label>
+                                    <input type="date" id="auditDate" name="auditDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="auditTime">Start Time: <span class="required">*</span></label>
+                                    <input type="time" id="auditTime" name="auditTime" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="location">Location/Zone: <span class="required">*</span></label>
+                                    <input type="text" id="location" name="location" required placeholder="e.g., Zone A, Bin Area 5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">Department: <span class="required">*</span></label>
+                                    <select id="department" name="department" required>
+                                        <option value="">Select department</option>
+                                        <option value="Inbound">Inbound</option>
+                                        <option value="Stow">Stow</option>
+                                        <option value="Pick">Pick</option>
+                                        <option value="Pack">Pack</option>
+                                        <option value="Ship">Ship</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Standards Checklist</h4>
+                            <div id="standardsChecklistContainer" class="checklist-container">
+                                <!-- Populated based on audit type -->
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Observations & Findings</h4>
+                            
+                            <div class="form-group">
+                                <label for="observations">Observations: <span class="required">*</span></label>
+                                <textarea id="observations" name="observations" rows="4" placeholder="Document observations during the audit" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="findings">Key Findings & Issues:</label>
+                                <textarea id="findings" name="findings" rows="4" placeholder="List any issues, non-conformities, or areas for improvement"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="recommendations">Recommendations:</label>
+                                <textarea id="recommendations" name="recommendations" rows="3" placeholder="Suggest corrective actions and improvements"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photosDocumentation">Supporting Documentation:</label>
+                                <input type="file" id="photosDocumentation" name="photosDocumentation" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                                <small>Upload photos, documents, or evidence files</small>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Audit Details</h4>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="itemsAudited">Items Audited: <span class="required">*</span></label>
+                                    <input type="number" id="itemsAudited" name="itemsAudited" min="1" required placeholder="e.g., 50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="defectsFound">Defects Found:</label>
+                                    <input type="number" id="defectsFound" name="defectsFound" min="0" placeholder="e.g., 5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="durationMinutes">Duration (minutes): <span class="required">*</span></label>
+                                    <input type="number" id="durationMinutes" name="durationMinutes" min="0" required placeholder="e.g., 30">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="overallRating">Overall Rating: <span class="required">*</span></label>
+                                <div class="rating-selector">
+                                    <input type="radio" id="rating1" name="overallRating" value="1" required>
+                                    <label for="rating1" class="rating-label">⭐ Poor</label>
+                                    
+                                    <input type="radio" id="rating2" name="overallRating" value="2" required>
+                                    <label for="rating2" class="rating-label">⭐⭐ Fair</label>
+                                    
+                                    <input type="radio" id="rating3" name="overallRating" value="3" required>
+                                    <label for="rating3" class="rating-label">⭐⭐⭐ Good</label>
+                                    
+                                    <input type="radio" id="rating4" name="overallRating" value="4" required>
+                                    <label for="rating4" class="rating-label">⭐⭐⭐⭐ Very Good</label>
+                                    
+                                    <input type="radio" id="rating5" name="overallRating" value="5" required>
+                                    <label for="rating5" class="rating-label">⭐⭐⭐⭐⭐ Excellent</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit Audit</button>
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="cancelAuditCreation()">Cancel</button>
+                            <button type="reset" class="btn btn-outline btn-lg">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="auditMessage" class="message-box" style="display: none;"></div>
+        </section>
+
+        <!-- Audit History Section -->
+        <section id="audit-history" class="section">
+            <div class="section-header">
+                <h2>Audit History</h2>
+                <p>View and manage all completed audits</p>
+            </div>
+
+            <div class="filter-bar">
+                <input type="text" id="searchAudits" placeholder="Search by auditor, location, or type...">
+                <select id="filterByType" class="filter-select">
+                    <option value="">All Audit Types</option>
+                </select>
+                <select id="filterByStatus" class="filter-select">
+                    <option value="">All Statuses</option>
+                    <option value="Compliant">Compliant</option>
+                    <option value="Non-Compliant">Non-Compliant</option>
+                </select>
+                <button class="btn btn-outline" onclick="exportAuditHistory()">📥 Export</button>
+            </div>
+
+            <div id="auditHistoryTable" class="audit-table-container">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Audit Type</th>
+                            <th>Auditor</th>
+                            <th>Location</th>
+                            <th>Items</th>
+                            <th>Defects</th>
+                            <th>Rating</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="auditTableBody">
+                        <tr class="empty-row">
+                            <td colspan="9">No audits found. Create your first audit to get started.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section id="reports" class="section">
+            <div class="section-header">
+                <h2>Audit Reports & Analytics</h2>
+                <p>Compliance trends and performance metrics</p>
+            </div>
+
+            <div class="reports-grid">
+                <div class="report-card">
+                    <h3>Compliance Summary</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="complianceChart"></canvas>
+                        <p class="chart-info">Compliance rate over time</p>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <h3>Audit Type Distribution</h3>
+                    <div class="chart-placeholder">
+                        <div id="typeDistribution"></div>
+                        <p class="chart-info">Audits by type</p>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <h3>Top Issues Found</h3>
+                    <div id="topIssues" class="issues-list">
+                        <p class="empty-state">No issues recorded yet</p>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <h3>Auditor Performance</h3>
+                    <div id="auditorPerformance" class="performance-list">
+                        <p class="empty-state">No audits completed yet</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal for Audit Details -->
+    <div id="auditDetailsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAuditDetails()">&times;</span>
+            <div id="auditDetailsContent">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="apollo-script.js"></script>
+</body>
+</html>
