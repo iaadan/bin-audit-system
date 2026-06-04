@@ -253,7 +253,19 @@
                     <option value="Compliant">Compliant</option>
                     <option value="Non-Compliant">Non-Compliant</option>
                 </select>
-                <button class="btn btn-outline" onclick="exportAuditHistory()">📥 Export</button>
+            </div>
+
+            <!-- CSV Export Buttons -->
+            <div class="export-buttons-container">
+                <h4>📥 Export Options:</h4>
+                <div class="export-buttons">
+                    <button class="btn btn-primary" onclick="csvExporter.exportAuditsToCSV()">📊 All Audits (CSV)</button>
+                    <button class="btn btn-primary" onclick="csvExporter.exportStandardsToCSV()">✓ Standards (CSV)</button>
+                    <button class="btn btn-primary" onclick="csvExporter.exportComplianceReportToCSV()">📈 Compliance Report (CSV)</button>
+                    <button class="btn btn-primary" onclick="csvExporter.exportAuditorPerformanceToCSV()">👥 Auditor Performance (CSV)</button>
+                    <button class="btn btn-primary" onclick="csvExporter.exportLocationDataToCSV()">📍 Location Data (CSV)</button>
+                    <button class="btn btn-outline" onclick="exportFilteredResultsToCSV()">🔍 Export Filtered Results</button>
+                </div>
             </div>
 
             <div id="auditHistoryTable" class="audit-table-container">
@@ -333,5 +345,6 @@
     </div>
 
     <script src="apollo-script.js"></script>
+    <script src="apollo-csv-automation.js"></script>
 </body>
 </html>
