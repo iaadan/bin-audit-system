@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bin Audit System</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-dashboard"></i>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="navbar-menu">
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" class="nav-link active">Dashboard</a></li>
+                    <li><a href="index.html" class="nav-link">SDF8 Audit</a></li>
+                    <li><a href="todo.html" class="nav-link">Todo List</a></li>
+                    <li><a href="#settings" class="nav-link">Settings</a></li>
+                </ul>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-card">
+                <div class="welcome-content">
+                    <h1>Welcome to Your Dashboard</h1>
+                    <p>Manage your applications and track productivity</p>
+                    <p class="time-display" id="timeDisplay"></p>
+                </div>
+                <div class="welcome-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon audit">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>SDF8 Audits</h3>
+                    <p class="stat-value" id="auditCount">0</p>
+                    <a href="index.html" class="stat-link">View Audits →</a>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon todo">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Todo Tasks</h3>
+                    <p class="stat-value" id="todoCount">0</p>
+                    <a href="todo.html" class="stat-link">View Tasks →</a>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon progress">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Completion Rate</h3>
+                    <p class="stat-value" id="completionRate">0%</p>
+                    <span class="stat-sublabel">Overall Progress</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon activity">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Last Activity</h3>
+                    <p class="stat-value" id="lastActivity">-</p>
+                    <span class="stat-sublabel">Recent update</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications Section -->
+        <section class="applications-section">
+            <h2>Applications</h2>
+            <div class="apps-grid">
+                <!-- SDF8 Audit App -->
+                <div class="app-card">
+                    <div class="app-header audit-header">
+                        <i class="fas fa-warehouse"></i>
+                        <h3>SDF8 Bin Straightening Initiative</h3>
+                    </div>
+                    <div class="app-content">
+                        <p class="app-description">
+                            Process Modification Validation (PMV) for Pick Department Enhancement. Complete daily bin audits and track quality metrics.
+                        </p>
+                        <div class="app-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Daily Audit Checklist</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>R.O.B.O.T.S. Standards</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>KPI Dashboard</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Training Materials</span>
+                            </div>
+                        </div>
+                        <div class="app-stats">
+                            <div class="app-stat">
+                                <span class="label">Audits Completed</span>
+                                <span class="value" id="sdfAuditCount">0</span>
+                            </div>
+                            <div class="app-stat">
+                                <span class="label">Compliance Rate</span>
+                                <span class="value" id="sdfComplianceRate">0%</span>
+                            </div>
+                        </div>
+                        <a href="index.html" class="app-btn">
+                            <i class="fas fa-arrow-right"></i> Open Application
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Todo App -->
+                <div class="app-card">
+                    <div class="app-header todo-header">
+                        <i class="fas fa-list-check"></i>
+                        <h3>Todo List Application</h3>
+                    </div>
+                    <div class="app-content">
+                        <p class="app-description">
+                            Organize your tasks with priorities and categories. Track progress and boost productivity with local storage.
+                        </p>
+                        <div class="app-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Task Management</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Priority Levels</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dark Mode</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Import/Export</span>
+                            </div>
+                        </div>
+                        <div class="app-stats">
+                            <div class="app-stat">
+                                <span class="label">Total Tasks</span>
+                                <span class="value" id="todoTaskCount">0</span>
+                            </div>
+                            <div class="app-stat">
+                                <span class="label">Completed</span>
+                                <span class="value" id="todoCompletedCount">0</span>
+                            </div>
+                        </div>
+                        <a href="todo.html" class="app-btn">
+                            <i class="fas fa-arrow-right"></i> Open Application
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activity Section -->
+        <section class="activity-section">
+            <h2>Recent Activity</h2>
+            <div class="activity-list" id="activityList">
+                <div class="empty-activity">
+                    <i class="fas fa-inbox"></i>
+                    <p>No recent activity yet. Start using the applications!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section class="quick-links-section">
+            <h2>Quick Actions</h2>
+            <div class="quick-links">
+                <a href="index.html#audit" class="quick-link-btn audit-link">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Start Audit</span>
+                </a>
+                <a href="todo.html" class="quick-link-btn todo-link">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Add Todo</span>
+                </a>
+                <button class="quick-link-btn export-link" id="exportAllBtn">
+                    <i class="fas fa-download"></i>
+                    <span>Export All Data</span>
+                </button>
+                <button class="quick-link-btn settings-link" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="modal-close" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Display</h3>
+                    <label class="setting-item">
+                        <input type="checkbox" id="darkModeSettings" class="setting-checkbox">
+                        <span>Dark Mode</span>
+                    </label>
+                    <label class="setting-item">
+                        <input type="checkbox" id="notificationsSettings" class="setting-checkbox" checked>
+                        <span>Enable Notifications</span>
+                    </label>
+                </div>
+                <div class="setting-divider"></div>
+                <div class="setting-group">
+                    <h3>Data Management</h3>
+                    <button id="clearAllDataBtn" class="setting-btn danger">
+                        <i class="fas fa-trash"></i> Clear All Data
+                    </button>
+                    <button id="resetDashboardBtn" class="setting-btn">
+                        <i class="fas fa-sync"></i> Reset Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Dashboard | All applications data is stored locally</p>
+    </footer>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
