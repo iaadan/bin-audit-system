@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Application</title>
+    <link rel="stylesheet" href="todo-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-tasks"></i> My Todo List</h1>
+                <p class="header-subtitle">Stay organized and boost productivity</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="todo-input" 
+                        placeholder="Add a new task..."
+                        autocomplete="off"
+                    >
+                    <button id="addBtn" class="add-btn" title="Add Todo">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                </div>
+                <div class="input-options">
+                    <select id="prioritySelect" class="priority-select">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <select id="categorySelect" class="category-select">
+                        <option value="">All Categories</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3>Total Tasks</h3>
+                    <p class="stat-number" id="totalTasks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <p class="stat-number completed" id="completedTasks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p class="stat-number pending" id="pendingTasks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completion Rate</h3>
+                    <p class="stat-number" id="completionRate">0%</p>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i> All
+                    </button>
+                    <button class="filter-btn" data-filter="active">
+                        <i class="fas fa-circle-notch"></i> Active
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i> Completed
+                    </button>
+                    <button class="filter-btn" data-filter="high">
+                        <i class="fas fa-exclamation-circle"></i> High Priority
+                    </button>
+                </div>
+                <div class="sort-section">
+                    <select id="sortSelect" class="sort-select">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="priority">By Priority</option>
+                        <option value="name">Alphabetical</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Todo List Section -->
+            <section class="todo-section">
+                <div class="section-header">
+                    <h2>Tasks</h2>
+                    <div class="action-buttons">
+                        <button id="clearCompletedBtn" class="action-btn" title="Clear Completed">
+                            <i class="fas fa-trash"></i> Clear Completed
+                        </button>
+                        <button id="deleteAllBtn" class="action-btn danger" title="Delete All">
+                            <i class="fas fa-trash-alt"></i> Delete All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Todos Container -->
+                <div class="todos-container" id="todosContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No tasks yet. Add one to get started!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="settings-section">
+                <div class="settings-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                </div>
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <label class="setting-label">
+                            <input type="checkbox" id="darkModeToggle" class="setting-checkbox">
+                            <span>Dark Mode</span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-label">
+                            <input type="checkbox" id="notificationsToggle" class="setting-checkbox" checked>
+                            <span>Enable Notifications</span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-label">
+                            <input type="checkbox" id="soundToggle" class="setting-checkbox" checked>
+                            <span>Sound Effects</span>
+                        </label>
+                    </div>
+                    <div class="setting-divider"></div>
+                    <div class="setting-item">
+                        <button id="exportBtn" class="setting-btn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <button id="importBtn" class="setting-btn">
+                            <i class="fas fa-upload"></i> Import Data
+                        </button>
+                        <input type="file" id="importFile" class="hidden-input" accept=".json">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Todo List Application | Data saved automatically to Local Storage</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Editing -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input 
+                    type="text" 
+                    id="editInput" 
+                    class="edit-input" 
+                    placeholder="Task description"
+                >
+                <select id="editPriority" class="edit-priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <select id="editCategory" class="edit-category">
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="health">Health</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelEditBtn" class="modal-btn cancel">Cancel</button>
+                <button id="saveEditBtn" class="modal-btn save">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="todo-script.js"></script>
+</body>
+</html>
